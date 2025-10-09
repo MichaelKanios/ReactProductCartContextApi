@@ -7,6 +7,10 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
 
+  const removeItem = (id) => {
+    addtoCart();
+  };
+
   return (
     <div className="flex m-auto justify-around relative">
       <h2>MyShop</h2>
@@ -23,7 +27,12 @@ const Navbar = () => {
                 key={item.id}
                 className="flex border-b border-gray-200 py-2 px-2"
               >
-                <button className="w-2 bg-rose-200 rounded-full">x</button>
+                <button
+                  onClick={() => removeItem(item.id)}
+                  className="mr-2 text-red-500 font-bold hover:text-red-700"
+                >
+                  x
+                </button>
                 <div>
                   <p className="text-sm font-medium">{item.title}</p>
                   <p className="text-xs text-gray-600">{item.price}€</p>
