@@ -1,14 +1,15 @@
 import { useState } from "react";
 import { useCart } from "../context/CartContext";
 const Navbar = () => {
-  const { addtoCart } = useCart();
+  const { addtoCart, setAddtoCart } = useCart();
   const [isOpen, setIsOpen] = useState(false);
   const handleCartBehavor = () => {
     setIsOpen(!isOpen);
   };
 
   const removeItem = (id) => {
-    setAddtoCart();
+    const updatedCart = addtoCart.filter((item) => item.id !== id);
+    setAddtoCart(updatedCart);
   };
 
   return (
@@ -34,6 +35,7 @@ const Navbar = () => {
                   x
                 </button>
                 <div>
+                  <p className="text-xs text-gray-600">{item.length}</p>
                   <p className="text-sm font-medium">{item.title}</p>
                   <p className="text-xs text-gray-600">{item.price}€</p>
                 </div>
