@@ -8,7 +8,7 @@ const Navbar = () => {
   };
 
   const removeItem = (id) => {
-    addtoCart();
+    setAddtoCart();
   };
 
   return (
