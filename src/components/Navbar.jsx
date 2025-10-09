@@ -19,9 +19,15 @@ const Navbar = () => {
             </p>
           ) : (
             addtoCart.map((item) => (
-              <div key={item.id} className="border-b border-gray-200 py-2">
-                <p className="text-sm font-medium">{item.title}</p>
-                <p className="text-xs text-gray-600">{item.price}€</p>
+              <div
+                key={item.id}
+                className="flex border-b border-gray-200 py-2 px-2"
+              >
+                <button className="w-2 bg-rose-200 rounded-full">x</button>
+                <div>
+                  <p className="text-sm font-medium">{item.title}</p>
+                  <p className="text-xs text-gray-600">{item.price}€</p>
+                </div>
               </div>
             ))
           )}
