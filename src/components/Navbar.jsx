@@ -35,7 +35,6 @@ const Navbar = () => {
                   x
                 </button>
                 <div>
-                  <p className="text-xs text-gray-600">{item.length}</p>
                   <p className="text-sm font-medium">{item.title}</p>
                   <p className="text-xs text-gray-600">{item.price}€</p>
                 </div>
