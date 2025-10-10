@@ -11,13 +11,29 @@ const Navbar = () => {
     const updatedCart = addtoCart.filter((item) => item.id !== id);
     setAddtoCart(updatedCart);
   };
+  const increaseQuantity = (id) => {
+    setAddtoCart((prevCart) =>
+      prevCart.map((item) =>
+        item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+      )
+    );
+  };
+  const decreaseQuantity = (id) => {
+    setAddtoCart((prevCart) =>
+      prevCart
+        .map((item) =>
+          item.id === id ? { ...item, quantity: item.quantity - 1 } : item
+        )
+        .filter((item) => item.quantity > 0)
+    );
+  };
 
   return (
     <div className="flex m-auto justify-around relative">
       <h2>MyShop</h2>
       <button onClick={handleCartBehavor}>Cart ({addtoCart.length})</button>
       {isOpen && (
-        <div className="absolute top-full right-0 mt-2 w-64 bg-white shadow-lg rounded-lg p-4 z-50">
+        <div className="absolute top-full right-0 mt-2 w-72 bg-white shadow-lg rounded-lg p-4 z-50">
           {addtoCart.length === 0 ? (
             <p className="text-gray-500 text-sm text-center mb-3">
               Your cart is empty
@@ -34,9 +50,13 @@ const Navbar = () => {
                 >
                   x
                 </button>
-                <div>
+                <div className="">
                   <p className="text-sm font-medium">{item.title}</p>
                   <p className="text-xs text-gray-600">{item.price}€</p>
+                  <button onClick={() => decreaseQuantity(item.id)}>-</button>
+                  <span>{item.quantity}</span>
+                  <button onClick={() => increaseQuantity(item.id)}>+</button>
+                  <span>Item Price:{item.quantity * item.price}</span>
                 </div>
               </div>
             ))

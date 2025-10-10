@@ -7,7 +7,7 @@ const ProductList = ({ product }) => {
     const alreadyInCart = addtoCart.some((item) => item.id === product.id);
 
     if (!alreadyInCart) {
-      setAddtoCart([...addtoCart, product]);
+      setAddtoCart([...addtoCart, { ...product, quantity: 1 }]);
     }
   };
   return (
